@@ -7,9 +7,9 @@
 package citadel_usermessages_go
 
 import (
-	citadel_gcmessages_common_go "github.com/DegaZZZ/hazeparser/proto/citadel_gcmessages_common_go"
-	gameevents_go "github.com/DegaZZZ/hazeparser/proto/gameevents_go"
-	networkbasetypes_go "github.com/DegaZZZ/hazeparser/proto/networkbasetypes_go"
+	citadel_gcmessages_common_go "hazeparser/proto/citadel_gcmessages_common_go"
+	gameevents_go "hazeparser/proto/gameevents_go"
+	networkbasetypes_go "hazeparser/proto/networkbasetypes_go"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

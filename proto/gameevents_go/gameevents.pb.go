@@ -7,7 +7,7 @@
 package gameevents_go
 
 import (
-	networkbasetypes_go "github.com/DegaZZZ/hazeparser/proto/networkbasetypes_go"
+	networkbasetypes_go "hazeparser/proto/networkbasetypes_go"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

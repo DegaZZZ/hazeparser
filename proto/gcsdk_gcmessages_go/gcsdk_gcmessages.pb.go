@@ -7,8 +7,8 @@
 package gcsdk_gcmessages_go
 
 import (
-	steammessages_go "github.com/DegaZZZ/hazeparser/proto/steammessages_go"
-	steammessages_steamlearn_go "github.com/DegaZZZ/hazeparser/proto/steammessages_steamlearn_go"
+	steammessages_go "hazeparser/proto/steammessages_go"
+	steammessages_steamlearn_go "hazeparser/proto/steammessages_steamlearn_go"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

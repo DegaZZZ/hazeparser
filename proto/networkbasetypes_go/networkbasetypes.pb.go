@@ -7,7 +7,7 @@
 package networkbasetypes_go
 
 import (
-	_ "github.com/DegaZZZ/hazeparser/proto/network_connection_go"
+	_ "hazeparser/proto/network_connection_go"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

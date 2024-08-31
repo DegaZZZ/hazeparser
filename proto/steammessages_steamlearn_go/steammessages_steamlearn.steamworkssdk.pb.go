@@ -7,7 +7,7 @@
 package steammessages_steamlearn_go
 
 import (
-	_ "github.com/DegaZZZ/hazeparser/proto/steammessages_unified_go"
+	_ "hazeparser/proto/steammessages_unified_go"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

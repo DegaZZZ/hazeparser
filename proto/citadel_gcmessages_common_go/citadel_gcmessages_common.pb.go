@@ -7,8 +7,8 @@
 package citadel_gcmessages_common_go
 
 import (
-	gcsdk_gcmessages_go "github.com/DegaZZZ/hazeparser/proto/gcsdk_gcmessages_go"
-	steammessages_go "github.com/DegaZZZ/hazeparser/proto/steammessages_go"
+	gcsdk_gcmessages_go "hazeparser/proto/gcsdk_gcmessages_go"
+	steammessages_go "hazeparser/proto/steammessages_go"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

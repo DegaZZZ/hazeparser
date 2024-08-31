@@ -1,4 +1,4 @@
-module github.com/DegaZZZ/hazeparser
+module hazeparser
 
 go 1.23.0
 
