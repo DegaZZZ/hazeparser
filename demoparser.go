@@ -23,16 +23,19 @@ type DemoParser struct {
 	demoGuid   string
 }
 
-func NewDemoParser(filePath string) (*DemoParser, error) {
+func NewDemoParser(filePath string, outputToFile bool) (*DemoParser, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
 		return nil, err
 	}
 
-	outputFile, err := os.OpenFile("output.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		file.Close()
-		return nil, fmt.Errorf("error opening output file: %w", err)
+	var outputFile *os.File
+	if outputToFile {
+		outputFile, err = os.OpenFile("output.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			file.Close()
+			return nil, fmt.Errorf("error opening output file: %w", err)
+		}
 	}
 
 	return &DemoParser{
@@ -43,7 +46,9 @@ func NewDemoParser(filePath string) (*DemoParser, error) {
 }
 
 func (dp *DemoParser) Close() {
-	dp.outputFile.Close()
+	if dp.outputFile != nil {
+		dp.outputFile.Close()
+	}
 }
 
 func (dp *DemoParser) Parse() error {
@@ -95,8 +100,10 @@ func (dp *DemoParser) Parse() error {
 
 		output := fmt.Sprintf("Command Number: %d (msgType: %d), Tick Number: %d, Frame Size: %d, Compressed: %t\n",
 			command, msgType, tick, size, isCompressed)
-		if _, err := dp.outputFile.WriteString(output); err != nil {
-			return fmt.Errorf("error writing to output file: %w", err)
+		if dp.outputFile != nil {
+			if _, err := dp.outputFile.WriteString(output); err != nil {
+				return fmt.Errorf("error writing to output file: %w", err)
+			}
 		}
 
 		if msgType == 1 {
@@ -123,8 +130,10 @@ func (dp *DemoParser) handleDemoHeader(messageData []byte) error {
 
 	header := fmt.Sprintf("DemoGuid: %s\nNetworkProtocol: %d\nServerName: %s\nClientName: %s\nMapName: %s\n",
 		dp.demoGuid, demoHeader.GetNetworkProtocol(), demoHeader.GetServerName(), demoHeader.GetClientName(), demoHeader.GetMapName())
-	if _, err := dp.outputFile.WriteString(header); err != nil {
-		return fmt.Errorf("error writing header to output file: %w", err)
+	if dp.outputFile != nil {
+		if _, err := dp.outputFile.WriteString(header); err != nil {
+			return fmt.Errorf("error writing header to output file: %w", err)
+		}
 	}
 
 	return nil
@@ -164,8 +173,10 @@ func (dp *DemoParser) parseCDemoPacket(messageData []byte) error {
 			return fmt.Errorf("error reading message data: %w", err)
 		}
 
-		if _, err := dp.outputFile.WriteString(fmt.Sprintf("Ubit: %d, MsgSize: %d\n", ubit, msgSize)); err != nil {
-			return fmt.Errorf("error writing to output file: %w", err)
+		if dp.outputFile != nil {
+			if _, err := dp.outputFile.WriteString(fmt.Sprintf("Ubit: %d, MsgSize: %d\n", ubit, msgSize)); err != nil {
+				return fmt.Errorf("error writing to output file: %w", err)
+			}
 		}
 
 		if ubit == 316 {

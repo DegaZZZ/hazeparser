@@ -13,6 +13,7 @@ const (
 
 func main() {
 	filePath := flag.String("f", "", "Path to the demo file")
+	outputToFile := flag.Bool("o", false, "Output to file")
 	flag.Parse()
 
 	if *filePath == "" {
@@ -20,7 +21,7 @@ func main() {
 		return
 	}
 
-	parser, err := NewDemoParser(*filePath)
+	parser, err := NewDemoParser(*filePath, *outputToFile)
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
 		return

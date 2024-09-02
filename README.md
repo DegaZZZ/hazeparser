@@ -14,6 +14,7 @@ In the output you will get the `output.txt` with all of the messages inside demo
 ### Flags
 
 1. `-f` sets a demo file
+2. `-o` saves parsing log into `output.txt` for debugging purposes
 
 ### TODO
 
